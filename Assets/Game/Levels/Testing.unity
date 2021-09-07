@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 1478.846, g: 1831.9392, b: 2425.4006, a: 1}
+  m_IndirectSpecularColor: {r: 1481.7754, g: 1835.8867, b: 2430.4492, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -512,13 +512,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 175412198}
-  m_LocalRotation: {x: 0.08819887, y: 0, z: 0, w: 0.9961029}
-  m_LocalPosition: {x: 0, y: 3, z: -6}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 861457520}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 10.12, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &175412202
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -643,6 +643,7 @@ GameObject:
   m_Component:
   - component: {fileID: 861457520}
   - component: {fileID: 861457521}
+  - component: {fileID: 861457522}
   m_Layer: 10
   m_Name: CameraParent
   m_TagString: Untagged
@@ -657,14 +658,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 861457519}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0.08715578, y: -0, z: -0, w: 0.9961947}
+  m_LocalPosition: {x: 0, y: 3, z: -4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 175412201}
-  m_Father: {fileID: 1183645789}
+  m_Father: {fileID: 0}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 10, y: 0, z: 0}
 --- !u!114 &861457521
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -678,12 +679,42 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _followTransform: {fileID: 1183645789}
-  _mouseSensitivity: 0.5
-  _mPositionOffset: {x: 0, y: 2, z: -2.5}
-  _mAngleOffset: {x: 0, y: 0, z: 0}
-  _mDamping: 4
-  _mMinPitch: -30
-  _mMaxPitch: 30
+  _mouseSensitivity: 0.4
+  _mPositionOffset: {x: 0, y: 3, z: -4}
+  _mAngleOffset: {x: 10, y: 0, z: 0}
+  _mDamping: 20
+  _mMinPitch: -15
+  _mMaxPitch: 15
+--- !u!114 &861457522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 861457519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8cbb591d9f4e9049ab9d8b1ab7bc911, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _lookUp: Mouse X
+  _lookRight: Mouse Y
+  _lookInput:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 861457521}
+        m_TargetAssemblyTypeName: Assets.Game.Scripts.Player_Systems.ThirdPersonFollow,
+          Assembly-CSharp
+        m_MethodName: SetMouseInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1072980295
 GameObject:
   m_ObjectHideFlags: 0
@@ -778,7 +809,6 @@ Transform:
   - {fileID: 1072980296}
   - {fileID: 1931159710}
   - {fileID: 2089703454}
-  - {fileID: 861457520}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -959,30 +989,12 @@ MonoBehaviour:
   _jumpKey: 32
   _moveForward: Vertical
   _moveRight: Horizontal
-  _lookUp: Mouse X
-  _lookRight: Mouse Y
   _moveInput:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1183645790}
         m_TargetAssemblyTypeName: Assets.Game.Scripts.Player_Systems.Movement, Assembly-CSharp
         m_MethodName: SetMovementDirection
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  _lookInput:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 861457521}
-        m_TargetAssemblyTypeName: Assets.Game.Scripts.Player_Systems.ThirdPersonFollow,
-          Assembly-CSharp
-        m_MethodName: SetMouseInput
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

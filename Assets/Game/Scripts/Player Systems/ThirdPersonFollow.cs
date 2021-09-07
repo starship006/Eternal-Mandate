@@ -2,8 +2,7 @@ using UnityEngine;
 using UnityEngine.Serialization;
 
 namespace Assets.Game.Scripts.Player_Systems {
-    public class ThirdPersonFollow : MonoBehaviour
-    {
+    public class ThirdPersonFollow : MonoBehaviour {
         [Header("References")]
         [SerializeField] private Transform _followTransform;
 
@@ -16,8 +15,8 @@ namespace Assets.Game.Scripts.Player_Systems {
         [Header("Up Down Rotation")]
         [SerializeField] private float _mMinPitch = -30.0f;
         [SerializeField] private float _mMaxPitch = 30.0f;
-        private float _angleX;
 
+        private float _angleX;
         private Vector2 _lookDir;
 
         private void Start()
@@ -34,7 +33,7 @@ namespace Assets.Game.Scripts.Player_Systems {
 
             Quaternion desiredRotation = _followTransform.rotation * Quaternion.Euler(_angleX, 0, 0) * offsetRotation;
 
-            Quaternion rot = Quaternion.Lerp(transform.rotation, desiredRotation, Time.deltaTime * _mDamping);
+            Quaternion rot = Quaternion.Slerp(transform.rotation, desiredRotation, Time.deltaTime * _mDamping);
             //Quaternion rot = Quaternion.RotateTowards(transform.rotation, initialRotation, _mDamping * Time.deltaTime);
 
             transform.rotation = rot;
@@ -45,7 +44,9 @@ namespace Assets.Game.Scripts.Player_Systems {
 
             Vector3 desiredPosition = _followTransform.position + forward + right + up;
 
-            transform.position = Vector3.Lerp(transform.position, desiredPosition, Time.deltaTime * _mDamping);
+            Vector3 pos = Vector3.Slerp(transform.position, desiredPosition, Time.deltaTime * _mDamping);
+
+            transform.position = pos;
         }
 
         public void SetMouseInput(Vector2 lookDir)
